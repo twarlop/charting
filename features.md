@@ -3,3 +3,9 @@
 - move selection
 - select by parent node
 - select siblings
+- on resize resize the canvas
+- feature to scale 
+- prevent drawing outside the canvas
+- add an arrow to the connection
+- allow saving the graph
+- version control the graph
