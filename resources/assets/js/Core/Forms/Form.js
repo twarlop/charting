@@ -94,7 +94,7 @@ export default class Form {
 
                     if(typeof resolve === "function")
                     {
-                        resolve(response)
+                        resolve(response);
                     }
                 })
                 .catch(({request, response}) => {

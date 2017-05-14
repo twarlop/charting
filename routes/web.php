@@ -19,6 +19,9 @@ Route::get('/user', 'HomeController@user')->middleware(['web']);
 
 Auth::routes();
 
+Route::get('/diagrams', 'DiagramController@index');
+Route::post('/diagrams/{diagram}', 'DiagramController@update');
+
 //register any route and bind it to the home, the home will make sure our vue app gets loaded
 //this way, we don't need to add an extra route binding for each new url that can be loaded in the front
 //we need this to allow a user to refresh a page in the browser...

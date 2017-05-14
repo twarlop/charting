@@ -40,6 +40,10 @@ export default class Rectangle extends Abstract{
         this.setLinkAndActive();
 
         this.addListeners();
+
+        this.data = {
+            text: text,
+        }
     }
 
     setLinkAndActive()
@@ -108,12 +112,49 @@ export default class Rectangle extends Abstract{
         //which would add a new node on top of the clicked one.
         this.graphic.on('click', () => {
             d3.event.stopPropagation();
-        })
+        });
+    }
+
+    updated(data)
+    {
+        this.data.text = data.name;
+        this.graphic.select('text').text(data.name);
+        this.setCalculatedAttributes(this.graphic.select('text'), this.graphic.select('rect'));
+        Object.keys(this.connections).forEach((uid) => {
+            this.connections[uid].updatePosition();
+        });
     }
 
     clickEvent()
     {
-        switch(intention())
+        //we'll use a timeout to allow clicks and double clicks
+        if(this.clickTimer)
+        {
+            clearTimeout(this.clickTimer);
+            this.clickTimer = false;
+            this.doubleClick();
+        }
+        else{
+            //need to get the event now,
+            //it wouldn't be available
+            //when delay has passed
+            let event = d3.event;
+
+            this.clickTimer = setTimeout(() => {
+                this.clickTimer = false;
+                this.singleClick(event);
+            }, 200);
+        }
+    }
+
+    doubleClick()
+    {
+        Event.$emit('edit_node.start', this);
+    }
+
+    singleClick(event)
+    {
+        switch(intention(event))
         {
             case 'deleting':
                 this.remove();

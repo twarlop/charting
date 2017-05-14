@@ -3,6 +3,9 @@
  * IF YOU EVER CHANGE THIS RULE, PLEASE DO SO IN AN ORGANISED WAY
  */
 
+import jquery from "jquery";
+window.$ = jquery;
+
 /**
  * setup our ui kit
  */

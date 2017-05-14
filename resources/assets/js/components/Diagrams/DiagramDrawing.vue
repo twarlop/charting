@@ -41,7 +41,10 @@
 
 <template>
 
-	<div id="drawing" :class="cursor"></div>
+	<div>
+		<div id="drawing" :class="cursor"></div>
+		<editor/>
+	</div>
 
 </template>
 
@@ -53,7 +56,13 @@
     import cursors from "./cursors";
     import boot from "./boot";
 
+    import editor from "./Editor.vue";
+
     export default Vue.component('diagram-drawing', {
+
+        components: {
+            editor,
+        },
 
         mixins: [cursors, boot],
 

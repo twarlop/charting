@@ -24,11 +24,10 @@ function id()
     return counter;
 }
 
-function intention()
+function intention(mouseEvent = d3.event.sourceEvent)
 {
     //need to use the source event, not the event itself
     //the event is the drag event, but we want to know what's happening with the mouse
-    let mouseEvent = d3.event.sourceEvent;
 
     if(mouseEvent.altKey)
     {
