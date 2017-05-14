@@ -11,7 +11,6 @@ export default [
         type: 'question',
     },
 
-
     {
         type: 'answer'
     },
