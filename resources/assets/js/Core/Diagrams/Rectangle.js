@@ -31,9 +31,11 @@ export default class Rectangle extends Abstract{
 
         if(coords)
         {
+            //the node was already saved in the database
             this.graphic.attr('transform', `translate(${coords.x}, ${coords.y})`);
         }
         else{
+            //the node was added by a click event
             this.graphic.attr('transform', this.updatePosition.bind(this));
         }
 
@@ -43,6 +45,15 @@ export default class Rectangle extends Abstract{
 
         this.data = {
             text: text,
+        };
+
+        //new node, open the
+        if(!coords)
+        {
+            Event.$emit('edit_node.start', {
+                node: this,
+                creating: true
+            });
         }
     }
 

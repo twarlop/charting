@@ -6,7 +6,7 @@
 			<div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid uk-height-viewport>
 				<div class="uk-padding-large uk-align-center">
 
-					<form v-form="{form, submit}" v-if="editing">
+					<form v-form="{form, submit}" v-if="node">
 
 						<form-text v-model="form.name" name="name" placeholder="New name" ref="name" :focus="true"></form-text>
 
@@ -36,7 +36,8 @@
 	                name: '',
                 }),
 	            //helper to avoid focussing issues
-	            editing: false
+	            node: false,
+	            creating: false
             }
         },
 
@@ -47,9 +48,10 @@
                 return UIkit.modal('#modal-full');
             },
 
-            start(node)
+            start({node, creating = false})
             {
-                this.editing = node;
+                this.creating = creating;
+                this.node = node;
                 this.form.name = node.data.text;
                 this.modal().show();
             },
@@ -59,7 +61,7 @@
 	            let url = '/diagrams/{id}';
 	            this.form.submit(url.replace('{id}', 'someid'))
 		            .then(({data}) => {
-                        this.editing.updated(data);
+                        this.node.updated(data);
                         this.modal().hide();
 		            })
 		            .catch(() => {});
@@ -71,7 +73,13 @@
             Event.$on('edit_node.start', this.start);
 
             $(this.$el).on('hide', () => {
-                this.editing = false;
+                //if we were creating a node, but we just closed the and didn't save
+	            //we'll remove the node from the canvas again
+                if(this.creating && !this.node.data.id)
+                {
+                    this.node.remove();
+                }
+                this.node = false;
             });
         },
 
