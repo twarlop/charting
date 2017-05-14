@@ -34,6 +34,7 @@ Vue.use(VueRouter);
  * Form stuff
  */
 import VForm from "./Core/Forms/VForm";
+import VFocus from "./Core/Directives/VFocus";
 
 import FormText from "./Core/Forms/Elements/FormText.vue";
 import FormTextarea from "./Core/Forms/Elements/FormTextarea.vue";
@@ -56,7 +57,7 @@ new Vue({
     store: store,
 
     directives: {
-        VForm,
+        VFocus, VForm,
     },
 
     components: [

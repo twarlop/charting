@@ -7,6 +7,7 @@
 		       :name="name"
 		       :placeholder="placeholder"
 		       autocomplete="off"
+		       v-focus="focus"
 		/>
 
 		<form-error :form="form" :name="name"></form-error>
@@ -38,6 +39,10 @@
             placeholder: {
                 required: false
             },
+
+	        focus:{
+                default: false,
+	        }
         },
 
         methods: {
@@ -49,7 +54,7 @@
 
 	    computed:{
             form: FormFinder
-	    }
+	    },
 
     });
 
