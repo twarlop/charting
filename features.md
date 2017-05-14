@@ -1,0 +1,5 @@
+- change text
+- brush selections
+- move selection
+- select by parent node
+- select siblings
