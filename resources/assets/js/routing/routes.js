@@ -24,7 +24,7 @@ let routes = [
     {
         path: '/:diagram',
         name: 'diagram',
-        component: require('./../components/Diagrams/Diagrams.vue'),
+        component: require('./../components/Diagrams/Diagram.vue'),
     },
 ];
 

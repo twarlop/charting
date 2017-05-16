@@ -2,7 +2,10 @@
 
 	<div>
 
-		<diagram-drawing/>
+		a list of diagrams to show
+
+		<router-link :to="{ name: 'diagram', params:{diagram: '123'}}" class="uk-button uk-button-primary">click me</router-link>
+
 
 	</div>
 
@@ -10,14 +13,7 @@
 
 <script>
 
-	import drawing from "./DiagramDrawing.vue";
-
-
 	export default {
-
-	    components: {
-		    drawing
-	    },
 
 	}
 

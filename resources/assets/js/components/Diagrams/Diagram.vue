@@ -51,14 +51,12 @@
 
 <script>
 
-    import Vue from "vue";
-
     import cursors from "./cursors";
     import boot from "./boot";
 
     import editor from "./Editor.vue";
 
-    export default Vue.component('diagram-drawing', {
+    export default {
 
         components: {
             editor,
@@ -66,6 +64,6 @@
 
         mixins: [cursors, boot],
 
-    });
+    };
 
 </script>
