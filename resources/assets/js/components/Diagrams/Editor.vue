@@ -73,7 +73,7 @@
             Event.$on('edit_node.start', this.start);
 
             $(this.$el).on('hide', () => {
-                //if we were creating a node, but we just closed the and didn't save
+                //if we were creating a node, but we just closed and didn't save
 	            //we'll remove the node from the canvas again
                 if(this.creating && !this.node.data.id)
                 {

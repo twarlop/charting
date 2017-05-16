@@ -160,7 +160,9 @@ export default class Rectangle extends Abstract{
 
     doubleClick()
     {
-        Event.$emit('edit_node.start', this);
+        Event.$emit('edit_node.start', {
+            node: this,
+        });
     }
 
     singleClick(event)
