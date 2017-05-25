@@ -16,7 +16,7 @@
 
 				</div>
 			</div>
-		</div>rer
+		</div>
 	</div>
 
 </template>
