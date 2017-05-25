@@ -5,10 +5,12 @@ import guard from "./guard";
 let routes = [
     {
         path: '/login',
+        name: 'login',
         component: require('./../components/Auth/Login.vue'),
     },
     {
         path: '/register',
+        name: 'register',
         component: require('./../components/Auth/Register.vue'),
     },
 

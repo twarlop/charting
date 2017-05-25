@@ -15,9 +15,7 @@ export function interceptor(request){
 
     if(request.response.status === 401 && excludes.indexOf(window.location.pathname) < 0)
     {
-        console.log('test');
-
-        window.location = '/login';
+        Vue.$router.push({name: 'login'});
     }
 
     //make sure to pass the response as the second argument,
@@ -52,7 +50,7 @@ export default (to, from, next) => {
                 next();
             }
             else{
-                next('/');
+                next({name: 'home'});
             }
         }).catch((all) => {
             //we weren't logged in, so we can resolve to the login page
@@ -60,7 +58,7 @@ export default (to, from, next) => {
             //unless we were going to the login or register page
             if(excludes.indexOf(to.path) < 0)
             {
-                next('/login');
+                next({name: 'login'});
             }
             else{
                 next();
@@ -74,7 +72,7 @@ export default (to, from, next) => {
             next();
         }
         else{
-            next('/');
+            next({name: 'home'});
         }
     }
 };
